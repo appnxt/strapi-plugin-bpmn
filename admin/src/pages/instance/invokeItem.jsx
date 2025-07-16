@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Checkbox,TextInput,Field, Table, Thead, Tbody, Tr, Td, Th } from '@strapi/design-system';
+import { Button,TextInput,Field, Table, Thead, Tbody, Tr, Td, Th } from '@strapi/design-system';
 import { Layouts, Page, Pagination, SearchInput, useQueryParams } from '@strapi/strapi/admin';
 import { useFetchClient,auth } from '@strapi/strapi/admin';
-import { useSearchParams } from 'react-router-dom';
-import { Execute } from '../../components/Execute';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const InvokeItemPage = () => {
   const [instanceDetails, setInstanceDetails] = useState([]);
   const [instanceItems, setInstanceItems] = useState([]);
   const [nodeInfo, setNodeInfo] = useState('');
-  const { get, put } = useFetchClient();
+  const { get, post } = useFetchClient();
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const id = searchParams.get('id');
   const proceeName = searchParams.get('processName');
@@ -53,6 +54,51 @@ const InvokeItemPage = () => {
       return {formKey, formFields};
   }
 
+  const engineInvoke = async (input) => {
+    console.log(input,"engineInvoke(itemQuery ,input)")
+    const itemQuery = { "items.id": id }
+    const { data } = await post('/bpmn/engine/invoke', {itemQuery ,input});
+    console.log(data,"result.execution.id")
+    navigate(`/plugins/bpmn/instance/${data.id}`, { 
+      replace: true, 
+      state: { data: 'example' } 
+    });
+  }
+
+  function DynamicForm({ nodeInfo }) {
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
+
+    const onSubmit = (data) => {
+      engineInvoke(data);
+    };
+
+    return (
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {nodeInfo === "" ? '' :
+          nodeInfo.formFields.map(item => (
+            <div key={item.id}>
+              <Field.Root id={item.id}>
+                <Field.Label>{item.label}</Field.Label>
+                <TextInput
+                  placeholder=""
+                  {...register(item.id, {
+                    required: item.required ? `${item.label}是必填项` : false
+                  })}
+                />
+                {errors[item.id] && <Field.Error>{errors[item.id].message}</Field.Error>}
+                <Field.Hint />
+              </Field.Root>
+            </div>
+          ))
+        }
+        <Button type="submit">Submit</Button>
+      </form>
+    );
+  }
   return (
     <>
       <Page.Title children={'bpmn - instance'} />
@@ -69,7 +115,7 @@ const InvokeItemPage = () => {
           </>
         }/>
         <Layouts.Content>
-          Item id: {id}
+          Item id: {id}, {instanceDetails.status}
           <Table>
             <Thead>
                 <Tr>
@@ -84,24 +130,7 @@ const InvokeItemPage = () => {
                 </Tr>
             </Tbody>
           </Table>
-          {nodeInfo==""?'':
-                        nodeInfo.formFields.map(item => (
-                            <Tr key={item.id}>
-                              {/* <Checkbox value={false} onChange={handleChange}>
-                                {item.label}
-                              </Checkbox> */}
-                              <Field.Root
-                                  id={item.id}
-                                >
-                                  <Field.Label>{item.label}</Field.Label>
-                                  <TextInput placeholder="" name={item.id}  />
-                                  <Field.Error />
-                                  <Field.Hint />
-                                </Field.Root>
-                            </Tr>
-                          ))
-                        }
-          <Execute item={elementId} name={proceeName}/>
+          <DynamicForm nodeInfo={nodeInfo} />
         </Layouts.Content>
       </Page.Main>
     </>

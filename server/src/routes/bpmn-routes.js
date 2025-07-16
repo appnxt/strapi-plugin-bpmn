@@ -44,6 +44,14 @@ module.exports = {
       config: {
         description: 'Get all process instances'
       }
-    },    
+    }, 
+    {
+      method: 'POST',
+      path: '/engine/invoke',
+      handler: 'bpmn.engineInvoke',
+      config: {
+        policies: [],
+      }
+    },       
   ]
 };

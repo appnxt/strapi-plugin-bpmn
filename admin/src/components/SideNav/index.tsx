@@ -1,9 +1,9 @@
-import { SubNav, useTracking } from '@strapi/strapi/admin';
+import { SubNav } from '@strapi/strapi/admin';
 import { Badge, Divider } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 import { Lightning } from '@strapi/icons';
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const StyledBadge = styled(Badge)`
   border-radius: 50%;
@@ -13,8 +13,7 @@ const StyledBadge = styled(Badge)`
 
 export const SideNav = () => {
   const { formatMessage } = useIntl();
-  const { trackUsage } = useTracking();
-  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   let label = "BPMN2.0"
   let sections = [
@@ -45,7 +44,9 @@ export const SideNav = () => {
     }
   ]
   const handleClickOnLink = (destination: string) => () => {
-    trackUsage('willNavigate', { from: pathname, to: destination });
+    navigate(`/plugins/bpmn/instance/${destination}`, { 
+      replace: true, 
+    });
   };
 
   return (

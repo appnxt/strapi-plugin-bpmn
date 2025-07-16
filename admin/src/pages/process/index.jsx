@@ -7,7 +7,6 @@ import { Layouts, Page, Pagination, SearchInput, useQueryParams } from '@strapi/
 const ProcessesPage = () => {
   const [processes, setProcesses] = useState([]);
   const [instances, setInstances] = useState([]);
-  const [bpmnXml, setBpmnXml] = useState('');
   const { get, put, post } = useFetchClient();
   const navigate = useNavigate();
   
@@ -38,7 +37,7 @@ const ProcessesPage = () => {
 
   return (
     <>
-      <Page.Title children={'Comments - discover'} />
+      <Page.Title children={'BPMN - processes'} />
       <Page.Main>
         <Layouts.Header
           title={"Processes"}

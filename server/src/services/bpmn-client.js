@@ -32,6 +32,11 @@ const bpmclient = ({ strapi }) => ({
   async getDefinitionsLoad(name) {
     let res = await this.client.definitions.load(name);
     return {"xml": res}
+  },
+
+  async engineInvoke(itemQuery ,input) {
+    let res = await this.client.engine.invoke(itemQuery, input);
+    return res;
   }
 });
 

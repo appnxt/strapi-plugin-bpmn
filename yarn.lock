@@ -5474,6 +5474,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bpmn@file:.yalc/bpmn::locator=strapi-plugin-bpmn%40workspace%3A.":
+  version: 0.0.0
+  resolution: "bpmn@file:.yalc/bpmn#.yalc/bpmn::hash=eb0983&locator=strapi-plugin-bpmn%40workspace%3A."
+  dependencies:
+    "@strapi/design-system": "npm:^2.0.0-rc.27"
+    "@strapi/icons": "npm:^2.0.0-rc.27"
+    bpmn-js: "npm:^18.6.2"
+    bpmn-js-properties-panel: "npm:^5.37.0"
+    bpmn-server: "npm:^2.3.5"
+    mongodb: "npm:^6.17.0"
+    react-intl: "npm:^7.1.11"
+  peerDependencies:
+    "@strapi/sdk-plugin": ^5.3.2
+    "@strapi/strapi": ^5.16.1
+    react: ^18.3.1
+    react-dom: ^18.3.1
+    react-router-dom: ^6.30.1
+    styled-components: ^6.1.19
+  checksum: 10c0/1e54882e0ddf23f8400a6607a9eb945834b7cf2801270f67b31c89541357dfacb4f4c785f593d7cb5af9887d866b056446a6cb1fd94ea53481579251b79ffad6
+  languageName: node
+  linkType: hard
+
 "brace-expansion@npm:^1.1.7":
   version: 1.1.12
   resolution: "brace-expansion@npm:1.1.12"
@@ -12969,6 +12991,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-hook-form@npm:^7.60.0":
+  version: 7.60.0
+  resolution: "react-hook-form@npm:7.60.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10c0/eb8518d42a074d9e115d4b414bac18ae72708b2d047a9453dcc7588b00df300b32cebf6ecb7f2c8aa534808b3dc54bde4124af95c1e432b6691f9aba07c93b11
+  languageName: node
+  linkType: hard
+
 "react-intl@npm:6.6.2":
   version: 6.6.2
   resolution: "react-intl@npm:6.6.2"
@@ -14505,36 +14536,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bpmn@file:.yalc/bpmn::locator=bpmn%40workspace%3A.":
-  version: 0.0.0
-  resolution: "bpmn@file:.yalc/bpmn#.yalc/bpmn::hash=694f8d&locator=bpmn%40workspace%3A."
-  dependencies:
-    "@strapi/design-system": "npm:^2.0.0-rc.27"
-    "@strapi/icons": "npm:^2.0.0-rc.27"
-    bpmn-js: "npm:^18.6.2"
-    bpmn-js-properties-panel: "npm:^5.37.0"
-    bpmn-server: "npm:^2.3.5"
-    mongodb: "npm:^6.17.0"
-    react-intl: "npm:^7.1.11"
-  peerDependencies:
-    "@strapi/sdk-plugin": ^5.3.2
-    "@strapi/strapi": ^5.16.1
-    react: ^18.3.1
-    react-dom: ^18.3.1
-    react-router-dom: ^6.30.1
-    styled-components: ^6.1.19
-  checksum: 10c0/4850c41c7123f8fbfd541a6efb0fbcc4b4193ec1e8b73ef7de6fc69b8621f0cf238c319f5868beef3e5adcadb0554b25dfa6b00b2cfc96d755dbf8c86026c2e1
-  languageName: node
-  linkType: hard
-
-"bpmn@workspace:.":
+"strapi-plugin-bpmn@workspace:.":
   version: 0.0.0-use.local
-  resolution: "bpmn@workspace:."
+  resolution: "strapi-plugin-bpmn@workspace:."
   dependencies:
     "@strapi/icons": "npm:^2.0.0-rc.27"
     "@strapi/sdk-plugin": "npm:^5.3.2"
     "@strapi/strapi": "npm:^5.16.1"
     "@tanstack/react-query": "npm:^5.81.5"
+    bpmn: "file:.yalc/bpmn"
     bpmn-client: "npm:^2.3.5"
     bpmn-js: "npm:^18.6.2"
     bpmn-js-properties-panel: "npm:^5.37.0"
@@ -14546,9 +14556,9 @@ __metadata:
     prettier: "npm:^3.6.2"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
+    react-hook-form: "npm:^7.60.0"
     react-intl: "npm:^7.1.11"
     react-router-dom: "npm:^6.30.1"
-    bpmn: "file:.yalc/bpmn"
     styled-components: "npm:^6.1.19"
     zod: "npm:^3.25.75"
   peerDependencies:

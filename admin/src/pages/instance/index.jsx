@@ -50,7 +50,7 @@ const InstancePage = () => {
 
   return (
     <>
-      <Page.Title children={'bpmn - instance'} />
+      <Page.Title children={'BPMN - instance'} />
       <Page.Main>
         <Layouts.Header
           title={"Instances"}

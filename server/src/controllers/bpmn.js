@@ -46,7 +46,16 @@ module.exports = {
     } catch (err) {
       ctx.throw(500, err);
     }    
-  }
+  },
 
+  async engineInvoke(ctx) {
+    try {
+      const {itemQuery ,input} = ctx.request.body;
+      const result = await strapi.plugins['bpmn'].service('bpmclient').engineInvoke(itemQuery ,input);
+      ctx.send(result);
+    } catch (err) {
+      ctx.throw(500, err);
+    }    
+  }
 };
 

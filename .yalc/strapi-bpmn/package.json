@@ -1,0 +1,57 @@
+{
+  "version": "0.0.0",
+  "keywords": [],
+  "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-admin": {
+      "source": "./admin/src/index.js",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
+    "./strapi-server": {
+      "source": "./server/src/index.js",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "strapi-plugin build",
+    "watch": "strapi-plugin watch",
+    "watch:link": "strapi-plugin watch:link",
+    "verify": "strapi-plugin verify"
+  },
+  "dependencies": {
+    "@strapi/design-system": "^2.0.0-rc.27",
+    "@strapi/icons": "^2.0.0-rc.27",
+    "bpmn-js": "^18.6.2",
+    "bpmn-js-properties-panel": "^5.37.0",
+    "bpmn-server": "^2.3.5",
+    "mongodb": "^6.17.0",
+    "react-intl": "^7.1.11"
+  },
+  "peerDependencies": {
+    "@strapi/sdk-plugin": "^5.3.2",
+    "@strapi/strapi": "^5.16.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.1",
+    "styled-components": "^6.1.19"
+  },
+  "strapi": {
+    "kind": "plugin",
+    "name": "bpmn",
+    "displayName": "",
+    "description": ""
+  },
+  "name": "bpmn",
+  "description": "",
+  "license": "MIT",
+  "author": "Junius <cho@jun.ac>",
+  "yalcSig": "afde2a0fccd0340e7abb8ceecf2d15b7"
+}

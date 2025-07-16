@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "bpmn": {
+      "signature": "afde2a0fccd0340e7abb8ceecf2d15b7",
+      "file": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "processes",
+  "info": {
+    "name": "Process",
+    "description": "BPMN processes fetched from external API"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "externalId": {
+      "type": "string"
+    },
+    "data": {
+      "type": "json"
+    }
+  }
+}

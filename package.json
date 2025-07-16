@@ -64,8 +64,8 @@
     "displayName": "",
     "description": ""
   },
-  "name": "bpmn",
-  "description": "",
+  "name": "strapi-plugin-bpmn",
+  "description": "Strapi - BPMN plugin",
   "license": "MIT",
   "author": "Junius <cho@jun.ac>"
 }

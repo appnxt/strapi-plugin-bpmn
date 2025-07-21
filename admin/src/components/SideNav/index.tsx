@@ -33,14 +33,24 @@ export const SideNav = () => {
           to: '/plugins/bpmn/processes',
         },
         {
-          id: 'instance',
+          id: 'instance_done',
           intlLabel: {
-            id: 'bpmn.components.SideNav.instance',
-            defaultMessage: 'Instance',
+            id: 'bpmn.components.SideNav.instance_done',
+            defaultMessage: 'Running',
           },
-          to: '/plugins/bpmn/instances',
+          to: '/plugins/bpmn/instances/running?status=running',
           withBullet: false,
-        },]
+        },
+        {
+          id: 'instance_end',
+          intlLabel: {
+            id: 'bpmn.components.SideNav.instance_end',
+            defaultMessage: 'Done',
+          },
+          to: '/plugins/bpmn/instances/end?status=end',
+          withBullet: false,
+        },      
+      ]
     }
   ]
   const handleClickOnLink = (destination: string) => () => {

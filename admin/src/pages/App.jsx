@@ -18,7 +18,8 @@ const InnerApp = () => {
       <Routes>
         <Route path="/processes" element={<ProcessesPage />} />
         <Route path="/process/:name" element={<ProcessesDetailPage  />} />
-        <Route path="/instances" element={<InstancePage />} />
+        <Route path="/instances/running" element={<InstancePage />} />
+        <Route path="/instances/end" element={<InstancePage />} />
         <Route path="/instance/:id" element={<InstanceDetailPage />} />
         <Route path="/invokeItem" element={<InvokeItemPage />} />
         <Route path="*" element={<Navigate to="instances" replace />} />
